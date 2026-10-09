@@ -1159,7 +1159,7 @@
   // ===== 0. Einstellungen für das Konto (Cloud) =====
   // Hier trägst du die zwei Werte aus Supabase ein (Project Settings > API).
   // Bleiben sie leer, läuft die App wie bisher nur auf diesem Gerät, ohne Konto.
-  const CLOUD_URL = "https://eeccmucbqoitkzzqtxgj.supabase.co/rest/v1/";   // z. B. "https://abcdefgh.supabase.co"
+  const CLOUD_URL = "https://eeccmucbqoitkzzqtxgj.supabase.co";
   const CLOUD_KEY = "sb_publishable_TBpQT5b2zWV54OgQuY0T6w_X98L8Jwm";   // der "anon" oder "publishable" Key (NICHT der "service_role" Key!)
   const CLOUD_AKTIV = CLOUD_URL !== "" && CLOUD_KEY !== "";
 
@@ -1874,14 +1874,7 @@
     tipp.style.left = Math.max(8, links) + "px";
     tipp.style.top = (oben < 8 ? y + 16 : oben) + "px";                       // Wenn oben kein Platz ist, dann darunter
   }
-
-  diagramm.addEventListener("pointermove", function (e) {
-    let spalte = e.target.closest(".monat-spalte");
-    if (spalte) tippZeigen(spalte, e.clientX, e.clientY); else tipp.hidden = true;
-  });
-  diagramm.addEventListener("pointerleave", function () { tipp.hidden = true; });
-
-  // Das Gleiche für die Tastatur (Tab-Taste)
+7ste)
   diagramm.addEventListener("focusin", function (e) {
     let spalte = e.target.closest(".monat-spalte");
     if (!spalte) return;
