@@ -3,7 +3,7 @@
 
 // Wenn du etwas an der App änderst, zähle die Nummer hoch (v1 -> v2).
 // Dann löscht der Browser den alten Speicher und lädt alles neu.
-const NAME = "budget-v1";
+const NAME = "budget-v2";
 
 // Diese Dateien werden bei der Installation gespeichert
 const DATEIEN = [
@@ -34,6 +34,13 @@ self.addEventListener("activate", function (e) {
 // Geht das nicht (offline), nehmen wir die gespeicherte Datei.
 self.addEventListener("fetch", function (e) {
   if (e.request.method !== "GET") return;
+
+  // Nur unsere eigenen Dateien und die Schrift speichern.
+  // Anfragen an Supabase (Konto und Daten) dürfen NIE gespeichert werden.
+  let url = new URL(e.request.url);
+  let eigene = url.origin === self.location.origin;
+  let schrift = url.hostname === "fonts.googleapis.com" || url.hostname === "fonts.gstatic.com";
+  if (!eigene && !schrift) return;
   e.respondWith(
     fetch(e.request).then(function (antwort) {
       let kopie = antwort.clone();
