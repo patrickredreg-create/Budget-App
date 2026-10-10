@@ -3,13 +3,14 @@
 
 // Wenn du etwas an der App änderst, zähle die Nummer hoch (v1 -> v2).
 // Dann löscht der Browser den alten Speicher und lädt alles neu.
-const NAME = "budget-v2";
+const NAME = "budget-v3";
 
 // Diese Dateien werden bei der Installation gespeichert
 const DATEIEN = [
   "./",
   "./index.html",
   "./manifest.webmanifest",
+  "./config.js",
   "./icons/icon-192.png",
   "./icons/icon-512.png",
   "./icons/apple-touch-icon.png"
